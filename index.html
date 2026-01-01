@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MG BOT PRO AI - Lifetime Access</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0c29 0%, #1a1c2e 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #6C5CE7, #5649C7);
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
+        }
+        
+        h1 {
+            font-size: 28px;
+            background: linear-gradient(to right, #6C5CE7, #00D1A0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+        }
+        
+        /* Package Card */
+        .package-card {
+            background: rgba(26,29,40,0.9);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .price {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(to right, #6C5CE7, #00D1A0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin: 20px 0;
+        }
+        
+        .currency {
+            font-size: 24px;
+            color: #00D1A0;
+        }
+        
+        .badge {
+            background: linear-gradient(135deg, #00D1A0, #00BFA5);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        /* Payment Methods */
+        .payment-options {
+            margin: 30px 0;
+        }
+        
+        .option-card {
+            background: rgba(26,29,40,0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+        
+        .option-card:hover {
+            border-color: #6C5CE7;
+            transform: translateY(-2px);
+        }
+        
+        .option-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .option-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #6C5CE7, #5649C7);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .option-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .option-network {
+            background: rgba(0,209,160,0.1);
+            color: #00D1A0;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        /* Wallet Address */
+        .wallet-box {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .address {
+            font-family: monospace;
+            font-size: 15px;
+            word-break: break-all;
+            padding-right: 50px;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(108, 92, 231, 0.2);
+            border: 1px solid #6C5CE7;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .copy-btn:hover {
+            background: #6C5CE7;
+        }
+        
+        .copy-btn.copied {
+            background: #00D1A0;
+            border-color: #00D1A0;
+        }
+        
+        /* QR Code */
+        .qr-container {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 15px 0;
+        }
+        
+        .qr-code {
+            width: 180px;
+            height: 180px;
+            border-radius: 8px;
+        }
+        
+        /* Steps */
+        .steps {
+            background: rgba(26,29,40,0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #00D1A0;
+        }
+        
+        .steps h3 {
+            margin-bottom: 20px;
+            color: #00D1A0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #6C5CE7, #5649C7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .contact-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+        
+        .telegram {
+            background: linear-gradient(135deg, #0088cc, #00A8E8);
+        }
+        
+        /* Floating Contact */
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            background: rgba(26,29,40,0.9);
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        
+        /* Notice */
+        .notice {
+            background: rgba(255, 77, 109, 0.1);
+            border: 1px solid rgba(255, 77, 109, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .notice i {
+            color: #FF4D6D;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .price {
+                font-size: 48px;
+            }
+            
+            .qr-code {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .floating-contact {
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Contact -->
+    <div class="floating-contact">
+        <a href="https://wa.me/447367066691" target="_blank" class="contact-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://t.me/mgbotpro" target="_blank" class="contact-btn telegram">
+            <i class="fab fa-telegram"></i>
+        </a>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h1>MG BOT PRO AI</h1>
+            <div class="subtitle">Lifetime Access - One Payment</div>
+        </div>
+        
+        <!-- Package -->
+        <div class="package-card">
+            <div class="badge">LIFETIME ACCESS</div>
+            <div class="price">
+                <span class="currency">$</span>24
+            </div>
+            <div class="subtitle">One-time payment • All features included</div>
+        </div>
+        
+        <!-- Payment Methods -->
+        <div class="payment-options">
+            <!-- USDT BEP20 -->
+            <div class="option-card">
+                <div class="option-header">
+                    <div class="option-icon">
+                        <i class="fab fa-usd"></i>
+                    </div>
+                    <div>
+                        <div class="option-title">USDT (BEP20)</div>
+                        <div class="option-network">Binance Smart Chain</div>
+                    </div>
+                </div>
+                
+                <div class="wallet-box">
+                    <div class="address" id="bep20-address">0x611431364376c9AdBa1a68065baD0B576665DB09</div>
+                    <button class="copy-btn" data-address="bep20-address">
+                        <i class="far fa-copy"></i> Copy
+                    </button>
+                </div>
+                
+                <div class="qr-container">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=0x611431364376c9AdBa1a68065baD0B576665DB09" 
+                         alt="USDT BEP20 QR Code" class="qr-code">
+                </div>
+            </div>
+            
+            <!-- USDT TRC20 -->
+            <div class="option-card">
+                <div class="option-header">
+                    <div class="option-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <div class="option-title">USDT (TRC20)</div>
+                        <div class="option-network">Tron Network</div>
+                    </div>
+                </div>
+                
+                <div class="wallet-box">
+                    <div class="address" id="trc20-address">TXXgUfqJNMiaFPu6ddUbhZH2V5x7b3xWgW</div>
+                    <button class="copy-btn" data-address="trc20-address">
+                        <i class="far fa-copy"></i> Copy
+                    </button>
+                </div>
+                
+                <div class="qr-container">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=TXXgUfqJNMiaFPu6ddUbhZH2V5x7b3xWgW" 
+                         alt="USDT TRC20 QR Code" class="qr-code">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Steps -->
+        <div class="steps">
+            <h3><i class="fas fa-list-ol"></i> Complete in 3 Steps</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>Send $24 USDT</strong>
+                    <p style="color: rgba(255,255,255,0.7); margin-top: 5px; font-size: 14px;">
+                        Copy address above or scan QR code
+                    </p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>Screenshot Payment</strong>
+                    <p style="color: rgba(255,255,255,0.7); margin-top: 5px; font-size: 14px;">
+                        Take screenshot of transaction confirmation
+                    </p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>Contact Us</strong>
+                    <p style="color: rgba(255,255,255,0.7); margin-top: 5px; font-size: 14px;">
+                        Send screenshot via WhatsApp/Telegram to get license key
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notice -->
+        <div class="notice">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p style="margin-top: 10px; font-size: 14px;">
+                <strong>Important:</strong> Send exactly $24 USDT • Double-check network • Keep transaction screenshot
+            </p>
+        </div>
+        
+        <!-- Contact -->
+        <div class="contact-section">
+            <div class="subtitle">Need help or other payment options?</div>
+            <div class="contact-buttons">
+                <a href="https://wa.me/447367066691" target="_blank" class="contact-btn whatsapp" title="WhatsApp Support">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://t.me/mgbotpro" target="_blank" class="contact-btn telegram" title="Telegram Support">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+            <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 15px;">
+                24/7 Support • License Key Delivery • Setup Help
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 MG BOT PRO AI • Lifetime Access</p>
+        </div>
+    </div>
+    
+    <script>
+        // Copy to clipboard function
+        function copyAddress(addressId) {
+            const address = document.getElementById(addressId).textContent;
+            
+            navigator.clipboard.writeText(address).then(() => {
+                const button = event.target.closest('.copy-btn');
+                const original = button.innerHTML;
+                
+                button.classList.add('copied');
+                button.innerHTML = '<i class="fas fa-check"></i> Copied';
+                
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.innerHTML = original;
+                }, 2000);
+            });
+        }
+        
+        // Setup copy buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const addressId = this.getAttribute('data-address');
+                    copyAddress(addressId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
